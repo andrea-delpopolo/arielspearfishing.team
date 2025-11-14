@@ -1,72 +1,519 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="The official website of the Ariel Spearfishing Team"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ariel Spearfishing Team - Official Website</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-<head>
-  <title>Ariel Spearfishing Team - Official Website</title>
-  <meta name="description" content="The official website of the Ariel Spearfishing Team">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <style>
-    html {
-      min-height: 100%;
-      background-image: url(images/bg.jpg);
-      background-size: 1000px;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: fixed;
-      background-color: #121010;
-    }
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-    }
+      :root {
+        --primary-color: #0a5d69;
+        --secondary-color: #14b8d0;
+        --accent-color: #ff6b35;
+        --dark-bg: #0a0f14;
+        --text-light: #ffffff;
+        --text-gray: #b8c5d1;
+      }
 
-    .fa {
-      padding: 20px;
-      font-size: 60px;
-      width: 100px;
-      text-align: center;
-      text-decoration: none;
-      margin: 5px 2px;
-    }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--dark-bg);
+        color: var(--text-light);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
 
-    .fa:hover {
-      opacity: 0.7;
-    }
+      /* Animated background overlay */
+      .background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(images/bg.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        opacity: 0.15;
+        z-index: -1;
+        animation: backgroundShift 20s ease-in-out infinite;
+      }
 
+      @keyframes backgroundShift {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
 
-    .fa-youtube {
-      background: #bb0000;
-      color: white;
-    }
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        background: rgba(10, 15, 20, 0.85);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
 
-    .fa-instagram {
-      background: #3f729b;
-      color: white;
-    }
-  </style>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KB4ELD6JD6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      nav.scrolled {
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
 
-  gtag('config', 'G-KB4ELD6JD6');
-</script>
-  </script>
-<script src="https://apis.google.com/js/platform.js"></script>
-</head>
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-<body>
-  <div class="footer">
-    <div class="g-ytsubscribe" data-channelid="UCkU9486guTACXWFdlzc4FYA" data-layout="full" data-theme="dark" data-count="default"></div>
-  </div>
-</body>
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
 
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 120px 2rem 2rem;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        width: 100%;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--text-light),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--text-gray);
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Video Section */
+      .video-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        background: rgba(20, 184, 208, 0.1);
+        border: 2px solid rgba(20, 184, 208, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .video-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 70px rgba(20, 184, 208, 0.4);
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 20px;
+      }
+
+      .video-label {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+      }
+
+      /* Channel Link Section */
+      .channel-section {
+        text-align: center;
+        padding: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .channel-link {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+        color: var(--text-light);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(20, 184, 208, 0.3);
+      }
+
+      .channel-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(20, 184, 208, 0.5);
+      }
+
+      .channel-link i {
+        margin-right: 0.5rem;
+      }
+
+      /* Social Media Section */
+      .social-section {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: rgba(20, 184, 208, 0.05);
+        border-radius: 20px;
+        max-width: 1200px;
+        margin: 0 auto 4rem;
+      }
+
+      .social-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        text-decoration: none;
+        font-size: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-link::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .social-link:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .social-link:hover {
+        transform: translateY(-5px) scale(1.1);
+      }
+
+      .social-link i {
+        position: relative;
+        z-index: 1;
+      }
+
+      .social-link.youtube {
+        background: linear-gradient(135deg, #ff0000, #cc0000);
+        color: white;
+      }
+
+      .social-link.instagram {
+        background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        color: white;
+      }
+
+      /* Subscribe Section */
+      .subscribe-section {
+        text-align: center;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem;
+        }
+
+        .hero {
+          padding: 100px 1rem 2rem;
+        }
+
+        .video-section {
+          padding: 1rem;
+        }
+
+        .social-links {
+          gap: 1.5rem;
+        }
+
+        .social-link {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-KB4ELD6JD6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-KB4ELD6JD6");
+    </script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+  </head>
+
+  <body>
+    <div class="background-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">Ariel Spearfishing Team</div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Ariel Spearfishing Team</h1>
+        <p>
+          Dive into the depths with us and experience the thrill of spearfishing
+          adventures
+        </p>
+
+        <!-- Video Section -->
+        <div class="video-section fade-in">
+          <div class="video-label">
+            <i class="fab fa-youtube"></i> Latest from Our Channel
+          </div>
+          <div class="video-container">
+            <!-- Embedded featured video -->
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/XkfjU_7pOQQ?si=75OkmgL8G7vte2m1&amp;controls=0"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Channel Link -->
+        <div class="channel-section fade-in">
+          <a
+            href="https://www.youtube.com/@ArielSpearfishingTeam"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="channel-link"
+          >
+            <i class="fab fa-youtube"></i> Visit Our YouTube Channel
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section fade-in">
+      <h2>Follow Our Adventures</h2>
+      <div class="social-links">
+        <a
+          href="https://www.youtube.com/@ArielSpearfishingTeam"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link youtube"
+          aria-label="YouTube"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link instagram"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section fade-in">
+      <div
+        class="g-ytsubscribe"
+        data-channelid="UCkU9486guTACXWFdlzc4FYA"
+        data-layout="full"
+        data-theme="dark"
+        data-count="default"
+      ></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Ariel Spearfishing Team. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
