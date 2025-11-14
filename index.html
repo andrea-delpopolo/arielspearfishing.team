@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- DNS Prefetch & Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+    <link rel="dns-prefetch" href="https://apis.google.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    
     <!-- Primary Meta Tags -->
     <title>Ariel Spearfishing Team - Spearfishing Videos, Underwater Hunting & Fishing Adventures</title>
     <meta
@@ -40,17 +53,44 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    
+    <!-- Preload critical background image -->
+    <link rel="preload" as="image" href="images/bg.jpg" fetchpriority="low" />
+    
+    <!-- Load Font Awesome asynchronously -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
+    
+    <!-- Load Google Fonts with font-display: swap -->
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    
+    <!-- Async CSS Loader Script -->
+    <script>
+      !function(e){"use strict";var t=function(t,n,o){var i,r=e.document,a=r.createElement("link");if(n)i=n;else{var l=(r.body||r.getElementsByTagName("head")[0]).childNodes;i=l[l.length-1]}var d=r.styleSheets;a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(r.body)return t();setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,n?i:i.nextSibling)});var f=function(e){for(var t=a.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=o||"all"}),a.onloadcssdefined=f,f(function(){a.media!==o&&(a.media=o||"all")}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+    </script>
 
     <style>
       * {
@@ -90,6 +130,9 @@
         opacity: 0.15;
         z-index: -1;
         animation: backgroundShift 20s ease-in-out infinite;
+        will-change: transform;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
       }
 
       @keyframes backgroundShift {
@@ -544,11 +587,7 @@
       }
     </style>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-KB4ELD6JD6"
-    ></script>
+    <!-- Google Analytics - Deferred for better performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -557,7 +596,11 @@
       gtag("js", new Date());
       gtag("config", "G-KB4ELD6JD6");
     </script>
-    <script src="https://apis.google.com/js/platform.js"></script>
+    <script
+      defer
+      src="https://www.googletagmanager.com/gtag/js?id=G-KB4ELD6JD6"
+    ></script>
+    <script defer src="https://apis.google.com/js/platform.js"></script>
     
     <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
@@ -585,7 +628,7 @@
       "@type": "VideoObject",
       "name": "Ariel Spearfishing Team Videos",
       "description": "Watch amazing spearfishing videos, underwater hunting adventures, and fishing content",
-      "thumbnailUrl": "https://www.arielspearfishing.team/images/bg.jpg",
+      "thumbnailUrl": "https://www.arielspearfishing.team/images/bg.png",
       "uploadDate": "2024-01-01",
       "contentUrl": "https://www.youtube.com/embed/XkfjU_7pOQQ",
       "embedUrl": "https://www.youtube.com/embed/XkfjU_7pOQQ",
@@ -817,6 +860,7 @@
               src="https://www.youtube.com/embed/XkfjU_7pOQQ"
               title="Spearfishing Video - Underwater Hunting - Ariel Spearfishing Team"
               frameborder="0"
+              loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -829,6 +873,7 @@
               src="https://www.youtube.com/embed/ZRrGIrX9keU"
               title="Spearfishing Video - Big Fish Catch - Ariel Spearfishing Team"
               frameborder="0"
+              loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -841,6 +886,7 @@
               src="https://www.youtube.com/embed/zqdSjSOXYMY"
               title="Spearfishing Video - Diving Adventure - Ariel Spearfishing Team"
               frameborder="0"
+              loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -853,6 +899,7 @@
               src="https://www.youtube.com/embed/q37RkyAxans"
               title="Spearfishing Video - Underwater Fishing - Ariel Spearfishing Team"
               frameborder="0"
+              loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -865,6 +912,7 @@
               src="https://www.youtube.com/embed/Kr4m3sIxkEo"
               title="Spearfishing Video - Freediving Techniques - Ariel Spearfishing Team"
               frameborder="0"
+              loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -877,6 +925,7 @@
               src="https://www.youtube.com/embed/08sP8qRq25U"
               title="Spearfishing Video - Spearfishing Tips - Ariel Spearfishing Team"
               frameborder="0"
+              loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
